@@ -12,5 +12,5 @@ pluginManagement {
     }
 }
 
-rootProject.name = "confluence-label-collector"
+rootProject.name = "Confluence Label Collector"
 

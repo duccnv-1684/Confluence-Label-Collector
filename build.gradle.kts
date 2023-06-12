@@ -35,7 +35,7 @@ compose.desktop {
         mainClass = "MainKt"
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
-            packageName = "confluence-label-collector"
+            packageName = "Confluence Label Collector"
             packageVersion = "1.0.0"
         }
     }
