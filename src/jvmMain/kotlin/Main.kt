@@ -5,10 +5,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.Button
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -20,7 +17,6 @@ import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
-import com.techcombank.business.labelconverter.tcblabelconverter.DocumentParser
 import java.awt.FileDialog
 import java.io.File
 import java.io.FilenameFilter
@@ -34,7 +30,12 @@ fun App() {
 
     val clipboardManager: ClipboardManager = LocalClipboardManager.current
 
-    MaterialTheme {
+    MaterialTheme(
+        MaterialTheme.colors.copy(
+            primary = Color.Red,
+            secondary = Color.White
+        )
+    ) {
         Scaffold(modifier = Modifier.fillMaxSize(), backgroundColor = Color.White) {
             Column(modifier = Modifier.fillMaxSize().padding(20.dp)) {
                 Row(
@@ -44,7 +45,7 @@ fun App() {
                 ) {
                     Button(onClick = {
                         val fileDialog = FileDialog(ComposeWindow())
-                        fileDialog.filenameFilter = FilenameFilter { dir, name -> name.contains(".html") }
+                        fileDialog.filenameFilter = FilenameFilter { _, name -> name.contains(".html") }
                         fileDialog.mode = FileDialog.LOAD
                         fileDialog.isMultipleMode = false
                         fileDialog.isVisible = true
@@ -94,19 +95,19 @@ fun App() {
 fun TableOfLabel(data: List<LabelData>) {
     Row(modifier = Modifier.fillMaxWidth().height(48.dp)) {
         Box(
-            modifier = Modifier.weight(1f).border(BorderStroke(1.dp, Color.Black)).background(Color.Gray),
+            modifier = Modifier.weight(1f).border(BorderStroke(1.dp, Color.Black)).background(Color.Red),
             contentAlignment = Alignment.CenterStart
         ) {
             Text(modifier = Modifier.fillMaxSize().padding(4.dp), text = "Label ID", color = Color.White)
         }
         Box(
-            modifier = Modifier.weight(1f).border(BorderStroke(1.dp, Color.Black)).background(Color.Gray),
+            modifier = Modifier.weight(1f).border(BorderStroke(1.dp, Color.Black)).background(Color.Red),
             contentAlignment = Alignment.CenterStart
         ) {
             Text(modifier = Modifier.fillMaxSize().padding(4.dp), text = "Label EN", color = Color.White)
         }
         Box(
-            modifier = Modifier.weight(1f).border(BorderStroke(1.dp, Color.Black)).background(Color.Gray),
+            modifier = Modifier.weight(1f).border(BorderStroke(1.dp, Color.Black)).background(Color.Red),
             contentAlignment = Alignment.CenterStart
         ) {
             Text(modifier = Modifier.fillMaxSize().padding(4.dp), text = "Label VI", color = Color.White)

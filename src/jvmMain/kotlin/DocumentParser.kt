@@ -1,6 +1,3 @@
-package com.techcombank.business.labelconverter.tcblabelconverter
-
-import LabelData
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import java.io.File
@@ -29,19 +26,19 @@ object DocumentParser {
             }
             val titleElements = headerRow.select("th")
             val columnCount = titleElements.size
-            val enIndex = titleElements.indexOfFirst { element ->
-                element.text().contains("Label EN", true)
+            val enIndex = titleElements.indexOfFirst { titleElement ->
+                titleElement.text().contains("Label EN", true)
             }
-            val viIndex = titleElements.indexOfFirst { element ->
-                element.text().contains("Label VN", true)
+            val viIndex = titleElements.indexOfFirst { titleElement ->
+                titleElement.text().contains("Label VN", true)
             }
-            val idIndex = titleElements.indexOfFirst { element ->
-                element.text().contains("Label ID", true)
+            val idIndex = titleElements.indexOfFirst { titleElement ->
+                titleElement.text().contains("Label ID", true)
             }
 
             if (enIndex == 0 || viIndex == 0) return@forEachIndexed
-            contentRows.forEachIndexed { _, element ->
-                val tds = element.select("td")
+            contentRows.forEachIndexed { _, row ->
+                val tds = row.select("td")
                 val offset = columnCount - tds.size
                 try {
                     val enContent = tds[enIndex - offset].text()
