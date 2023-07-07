@@ -44,7 +44,9 @@ object DocumentParser {
                     val enContent = tds[enIndex - offset].text()
                     val viContent = tds[viIndex - offset].text()
                     val id = tds[idIndex - offset].text()
-                    data.add(LabelData(id, enContent, viContent))
+                    if (id.isNotBlank()){
+                        data.add(LabelData(id, enContent, viContent))
+                    }
                 } catch (e: Exception) {
                     e.printStackTrace()
                 }

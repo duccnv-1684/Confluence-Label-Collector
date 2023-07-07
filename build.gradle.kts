@@ -26,7 +26,6 @@ kotlin {
                 implementation("org.jsoup:jsoup:1.16.1")
             }
         }
-        val jvmTest by getting
     }
 }
 
@@ -36,7 +35,7 @@ compose.desktop {
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
             packageName = "Confluence Label Collector"
-            packageVersion = "1.0.0"
+            packageVersion = "1.0.1"
         }
     }
 }
